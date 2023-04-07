@@ -10,20 +10,27 @@
 </nav>
 
 <div class="container-fluid d-flex flex-wrap">
-
-  <div class="box-rede shadow rounded border">
-    <div class="box-imagem-rede rounded">
-      <img src="{% static 'img/Rede-IFMT.svg' %}" class="img-fluid" alt="...">
+  <div class="container">
+    <div class="box-rede shadow rounded border mr-auto">
+      <div class="box-imagem-rede rounded">
+        <img src="{% static 'img/Rede-IFMT.svg' %}" class="img-fluid" alt="...">
+      </div>
     </div>
+    <form class="form" method="POST">
+      <div class="input-group">
+        <input type="file" class="shadow p-3" placeholder="Insira seu arquivo aqui" id="input-txt" />
+      </div>
+      <button style=" margin: 2em; float: right;" class="btn btn-primary right">
+        Enviar
+      </button>
+    </form>
   </div>
+  
 
 
   <!--Componente para importar a lista de arestas-->
-  <div>
-    <div class="input-group">
-      <input type="file" class="shadow p-3 " placeholder="Insira seu arquivo aqui" id="input-txt" />
-    </div>
-  </div>
+  
+
   <div class="container">
     <div class="row">
       <div class="col-sm">
@@ -45,7 +52,7 @@
         <div class="card" style="width: 18rem;">
           <!--<img src="" class="card-img-top" alt="">-->
           <div class="card-body">
-            <h1 class="card-text">tETE</h1>
+            <h1 class="card-text">Transitividade Média</h1>
           </div>
         </div>
     </div>
@@ -173,6 +180,9 @@
   
   .container {
     padding-top: 2% !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .container-fluid {
@@ -185,6 +195,13 @@
     border-radius: 2em;
   }
 
+  .btn-primary {
+    background-color: #00B51E !important;
+  }
+
+  .card-text {
+    font-size: 16pt;
+  }
 </style>
 
 {% endblock %}
