@@ -11,4 +11,5 @@ router.register('artigos', ArtigosViewSet, basename='Artigos')
 urlpatterns = [
     path('', views.index, name='ConectaIF'),
     path('api/', include(router.urls)),
+    path('artigos_publicados', views.artigos_publicados, name='artigos_publicados'),
 ]

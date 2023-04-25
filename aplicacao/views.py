@@ -28,3 +28,6 @@ class RedesViewSet(viewsets.ModelViewSet):
     serializer_class = RedeSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
+
+def artigos_publicados(self):
+    return render(None, 'artigos_publicados.html')

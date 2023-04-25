@@ -3,11 +3,7 @@
 {% block content %}
 <!-- As a heading -->
 
-<nav class="navbar">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1" style="font-family: Rubiko iso, Arial, Helvetica, sans-serif;">ConectaIF</span>
-  </div>
-</nav>
+{% include 'partials/_nav.html' %}
 
 <div class="container-fluid d-flex flex-wrap">
   <div class="container">
@@ -62,15 +58,6 @@
 {% include "partials/_footer.html" %}
 
 <style>
-  .navbar{
-    padding: 0 !important;
-  }
-  nav .container-fluid {
-    
-    margin: 0 !important;
-    background-image: linear-gradient(to right, #00B51E, #005B0F) !important;
-  }
-
   .h1 {
     margin-left: 5% !important;
     color: #FFFFFF !important;
