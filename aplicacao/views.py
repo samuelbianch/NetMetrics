@@ -4,9 +4,18 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets, generics
 from aplicacao.models import Autor, Rede, Artigo
 from aplicacao.serializer import AutorSerializer, ArtigoSerializer, RedeSerializer
+from aplicacao.make_graph import Make_Graph
 
-def index(self):
-    return render(None, 'index.html')
+def index(request):
+    if request.method == 'POST':
+        rede = request.POST['rede-txt']
+        direcionada = request.POST['direcionada']
+        grafo = Make_Graph(rede, direcionada)
+        grafo.plot_graph()
+        contexto = grafo.monta_contexto()
+
+        return render(request, 'index.html', contexto)
+    return render(request, 'index.html')
 
 class AutoresViewSet(viewsets.ModelViewSet):
     """Exibe todos os autores"""

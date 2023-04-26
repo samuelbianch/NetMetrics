@@ -12,9 +12,13 @@
         <img src="{% static 'img/Rede-IFMT.svg' %}" class="img-fluid" alt="...">
       </div>
     </div>
-    <form class="form" method="POST">
+    <form class="form" method="POST" action="{% url 'ConectaIF' %}">
+      {% csrf_token %}
       <div class="input-group">
-        <input type="file" class="shadow p-3" placeholder="Insira seu arquivo aqui" id="input-txt" />
+        <input type="file" name="rede-txt" class="shadow p-3" placeholder="Insira seu arquivo aqui" id="input-txt" />
+      </div>
+      <div>
+        <input type="checkbox" id="direcionada" name="direcionada"> Direcionada </input>
       </div>
       <button style=" margin: 2em; float: right;" class="btn btn-primary right">
         Enviar
