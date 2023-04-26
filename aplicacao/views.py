@@ -7,9 +7,14 @@ from aplicacao.serializer import AutorSerializer, ArtigoSerializer, RedeSerializ
 from aplicacao.make_graph import Make_Graph
 
 def index(request):
-    if request.method == 'POST':
-        rede = request.POST['rede-txt']
+    if request.method == 'POST' and request.FILES['rede-txt']:
+        rede = request.FILES['rede-txt']
+        print(rede)
         direcionada = request.POST['direcionada']
+
+        objeto_rede = Rede.objects.create(arquivo=rede)
+        objeto_rede.save()
+
         grafo = Make_Graph(rede, direcionada)
         grafo.plot_graph()
         contexto = grafo.monta_contexto()
