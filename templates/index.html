@@ -24,6 +24,15 @@
         Enviar
       </button>
     </form>
+
+    <div>
+      <h3>Arestas: </h3>
+      <h3>Vertices: </h3>
+      <h3>Reciprocidade: </h3>
+      <h3>Assortatividade: </h3>
+      <h3>Mediatrans: </h3>
+    </div>
+    
   </div>
   
 
@@ -37,6 +46,7 @@
         <div class="card" style="width: 18rem;">
           <!--<img src="" class="card-img-top" alt="">-->
           <div class="card-body">
+            {% include "partials/_grafico_reciprocidade.html" %}
             <h1 class="card-text">Reciprocidade</h1>
           </div>
         </div>
@@ -45,6 +55,7 @@
         <div class="card" style="width: 18rem;">
           <!--<img src="" class="card-img-top" alt="">-->
           <div class="card-body">
+            <img src="{% static 'img/grafico.png' %}" class="card-img-top">
             <h1 class="card-text">Assortatividade</h1>
           </div>
         </div>  
@@ -52,7 +63,7 @@
         <div class="card" style="width: 18rem;">
           <!--<img src="" class="card-img-top" alt="">-->
           <div class="card-body">
-            {% include "partials/_grafico.html" %}
+            <img src="{% static 'img/grafico.png' %}" class="card-img-top">
             <h1 class="card-text">Transitividade Média</h1>
           </div>
         </div>

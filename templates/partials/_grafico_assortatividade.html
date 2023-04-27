@@ -1,0 +1,25 @@
+<div id="chart"></div>
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script>
+Highcharts.chart('chart', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Exemplo'
+    },
+    xAxis: {
+        categories: ['exemplo1', 'exemplo2', 'exemplo3', 'exemplo4', 'exemplo5']
+    },
+    series: [{
+        name: 'caso',
+        data: [107]
+    }, {
+        name: 'caso1',
+        data: [133]
+    }, {
+        name: 'caso2',
+        data: [1052]
+    }]
+});
+</script>
