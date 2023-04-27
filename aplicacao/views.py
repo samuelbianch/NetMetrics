@@ -18,7 +18,7 @@ def index(request):
         grafo = Make_Graph(rede, direcionada)
         grafo.plot_graph()
         contexto = grafo.monta_contexto()
-
+        print(contexto)
         return render(request, 'index.html', contexto)
     return render(request, 'index.html')
 
