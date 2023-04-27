@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets, generics
@@ -45,3 +45,6 @@ class RedesViewSet(viewsets.ModelViewSet):
 
 def artigos_publicados(self):
     return render(None, 'artigos_publicados.html')
+
+def como_fazer(self):
+    return render(None, 'como_fazer.html')

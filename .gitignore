@@ -5,6 +5,7 @@
 src/__pycache__/
 static/
 media/
+node_modules/
 ### Python ###
 # Byte-compiled / optimized / DLL files
 
