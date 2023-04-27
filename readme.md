@@ -30,6 +30,12 @@ Instale os pacotes necessários dentro da venv.
 pip install -r .\requirements.txt
 `
 
+Instale também através do yarn a lib do Plotly
+
+`
+yarn install plotly.js-dist
+`
+
 Inicie a aplicação
 
 `
