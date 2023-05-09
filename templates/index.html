@@ -9,7 +9,11 @@
   <div class="container">
     <div class="box-rede shadow rounded border mr-auto">
       <div class="box-imagem-rede rounded">
+        {% if imagem %}
+        <img src="{{ imagem }}" class="img-fluid" alt="...">
+        {% else %}
         <img src="{% static 'img/Rede-IFMT.svg' %}" class="img-fluid" alt="...">
+        {% endif %}
       </div>
     </div>
     <form class="form" method="POST" action="{% url 'ConectaIF' %}" enctype="multipart/form-data">

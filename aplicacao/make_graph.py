@@ -26,26 +26,22 @@ class Make_Graph():
 		self.grafo = grafo
 
 	def plot_graph(self):
-
-		i = 0
-		vertices = self.grafo.vcount()
-		vindex1=[""]*vertices
-
-		self.arestas = self.grafo.ecount()
-		self.vertices = self.grafo.vcount()
-		self.reciprocidade = self.grafo.reciprocity()
-		self.assortatividade = self.grafo.assortativity_degree()
-		self.mediatrans = self.grafo.transitivity_avglocal_undirected()
-
-		igraph.plot(self.grafo, "aplicacao/static/redes/" + str(time.time()) + ".svg")
+		return igraph.plot(self.grafo, "aplicacao/static/redes/" + str(time.time()) + ".svg")
 
 	def monta_contexto(self):
+		arestas = self.grafo.ecount()
+		vertices = self.grafo.vcount()
+		reciprocidade = self.grafo.reciprocity()
+		assortatividade = self.grafo.assortativity_degree()
+		mediatrans = self.grafo.transitivity_avglocal_undirected()
+
 		contexto = {
-			"arestas": self.arestas,
-			"vertices": self.vertices,
-			"reciprocidade": self.reciprocidade,
-			"assortatividade": self.assortatividade,
-			"mediatrans": self.mediatrans,
+			"arestas": round(arestas,2),
+			"vertices": round(vertices,2),
+			"reciprocidade": round(reciprocidade,2),
+			"assortatividade": round(assortatividade,2),
+			"mediatrans": round(mediatrans,2),
+			"imagem" : self.plot_graph()
 		}
 
 		return contexto

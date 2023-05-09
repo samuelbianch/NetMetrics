@@ -16,8 +16,9 @@ def index(request):
         objeto_rede.save()
 
         grafo = Make_Graph(rede, direcionada)
-        grafo.plot_graph()
+        
         contexto = grafo.monta_contexto()
+
         print(contexto)
         return render(request, 'index.html', contexto)
     return render(request, 'index.html')
