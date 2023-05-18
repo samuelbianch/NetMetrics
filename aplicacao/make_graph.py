@@ -26,7 +26,9 @@ class Make_Graph():
 		self.grafo = grafo
 
 	def plot_graph(self):
-		return igraph.plot(self.grafo, "aplicacao/static/redes/" + str(time.time()) + ".svg")
+		nome_da_imagem = str(time.time()) + ".svg"
+		igraph.plot(self.grafo, "aplicacao/static/redes/" + nome_da_imagem,  bbox=(600, 200), margin=20, edge_arrow_size=0.3, vertex_color=(255, 0, 0), vertex_label_color=(225, 225, 0), vertex_label_size=1, vertex_dist=200)
+		return nome_da_imagem
 
 	def monta_contexto(self):
 		arestas = self.grafo.ecount()
