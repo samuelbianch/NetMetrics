@@ -1,6 +1,7 @@
 from datetime import datetime
 import igraph
 import time
+from aplicacao.plotly import Gerar_Grafico
 
 class Make_Graph():
 
@@ -36,6 +37,11 @@ class Make_Graph():
 		reciprocidade = self.grafo.reciprocity()
 		assortatividade = self.grafo.assortativity_degree()
 		mediatrans = self.grafo.transitivity_avglocal_undirected()
+
+		Gerar_Grafico.gerar_donut("Media Trans", mediatrans, "transmedia")
+		Gerar_Grafico.gerar_donut("Reciprocidade", reciprocidade, "reciprocidade")
+		Gerar_Grafico.gerar_donut("Assortatividade", assortatividade, "assortatividade")
+
 
 		contexto = {
 			"arestas": round(arestas,2),

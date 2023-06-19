@@ -3,7 +3,7 @@
 **Para** pesquisadores de interação social, **que** desejam estudar o convívio social no meio acadêmico, **o ConectaIF é um** sistema WEB que pode comprovar computacionalmente, esteriótipos sobre relacionamentos humanos. **Ao contrário** de sistemas que não disponibilizam esta praticidade dos pesquisadores testarem as próprias redes, **nosso produto** visa destacar o convívio de estudantes e suas relações de amizade, a partir de grafos e análises estatísticas sobre suas interações, colhidos pelo próprio usuário.
 
 
-# Como usar
+## Como usar
 
 Instale o Python 3 junto com o Pip e siga os seguintes passos para executar em modo de desenvolvimento.
 
@@ -42,7 +42,7 @@ Inicie a aplicação
 python manage.py runserver
 `
 
-# Créditos
+## Créditos
 
 <a href="http://lattes.cnpq.br/4585329097906649" style="color: inherit;" target="_blank">Samuel Oliveira Silva Bianch</a>  *(Autor)* 
 
