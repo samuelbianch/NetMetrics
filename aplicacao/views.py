@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import viewsets, generics
+from rest_framework import viewsets
 from aplicacao.models import Autor, Rede, Artigo
 from aplicacao.serializer import AutorSerializer, ArtigoSerializer, RedeSerializer
 from aplicacao.make_graph import Make_Graph

@@ -69,9 +69,9 @@ WSGI_APPLICATION = 'conectaif.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'conectaif',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432'
     }
