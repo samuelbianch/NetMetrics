@@ -7,34 +7,49 @@
 
 <div class="container-fluid d-flex flex-wrap">
   <div class="container">
-    <div class="box-rede shadow rounded border mr-auto">
-      <div class="box-imagem-rede rounded">
-        {% if imagem %}
-        <img src="static/redes/{{imagem}}" class="img-fluid" alt="...">
-        {% else %}
-        <img src="{% static 'img/Rede-IFMT.svg' %}" class="img-fluid" alt="...">
-        {% endif %}
+      <div class="shadow rounded border mr-auto">
+        <div class="rounded">
+          {% if imagem %}
+          <img src="static/redes/{{imagem}}" class="img-fluid" alt="...">
+          {% else %}
+          <img src="{% static 'img/Rede-IFMT.svg' %}" class="img-fluid" alt="...">
+          {% endif %}
+        </div>
       </div>
-    </div>
-    <form class="form" method="POST" action="{% url 'ConectaIF' %}" enctype="multipart/form-data">
-      {% csrf_token %}
-      <div class="input-group">
-        <input type="file" name="rede-txt" class="shadow p-3" placeholder="Insira seu arquivo aqui" id="input-txt" />
-      </div>
-      <div>
-        <input type="checkbox" id="direcionada" name="direcionada"> Direcionada </input>
-      </div>
-      <button style=" margin: 2em; float: right;" class="btn btn-primary right">
-        Enviar
-      </button>
-    </form>
+      <form class="form" method="POST" action="{% url 'ConectaIF' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group">
+          <input type="file" name="rede-txt" class="form-control p-3" placeholder="Insira seu arquivo aqui" id="input-txt" />
+        </div>
+        <div>
+          <input type="checkbox" id="direcionada" name="direcionada"> Direcionada </input>
+        </div>
+        <button style=" margin: 2em; float: right;" class="btn btn-primary right">
+          Enviar
+        </button>
+      </form>
 
-    <div>
-      <h3>Arestas: {{ arestas }}</h3>
-      <h3>Vertices: {{ vertices }}</h3>
-      <h3>Reciprocidade: {{ reciprocidade }}</h3>
-      <h3>Assortatividade: {{ assortatividade }}</h3>
-      <h3>Mediatrans: {{ mediatrans }}</h3>
+    <div class="row w-100">
+      <table id="example" class="table table-striped text-center mt-5 justify-content" style="width:100%">
+        <thead>
+            <tr>
+              <th>Arestas</th>
+              <th>Vertices</th>
+              <th>Reciprocidade</th>
+              <th>Assortatividade</th>
+              <th>Transitividade média</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ arestas }}</td>
+            <td>{{ vertices }}</td>
+            <td>{{ reciprocidade }}</td>
+            <td>{{ assortatividade }}</td>
+            <td>{{ mediatrans }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
   
@@ -50,7 +65,7 @@
           <!--<img src="" class="card-img-top" alt="">-->
           <div class="card-body">
             {% include "partials/_grafico_reciprocidade.html" %}
-            <h1 class="card-text">Reciprocidade</h1>
+            <h1 class="card-text text-center">Reciprocidade</h1>
           </div>
         </div>
       </div>
@@ -59,7 +74,7 @@
           <!--<img src="" class="card-img-top" alt="">-->
           <div class="card-body">
             {% include "partials/_grafico_assortatividade.html" %}
-            <h1 class="card-text">Assortatividade</h1>
+            <h1 class="card-text text-center">Assortatividade</h1>
           </div>
         </div>  
       </div>
@@ -67,7 +82,7 @@
           <!--<img src="" class="card-img-top" alt="">-->
           <div class="card-body">
             {% include "partials/_grafico_transmedia.html" %}
-            <h1 class="card-text">Transitividade Média</h1>
+            <h1 class="card-text text-center">Transitividade Média</h1>
           </div>
         </div>
     </div>
