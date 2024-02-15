@@ -9,8 +9,11 @@ from aplicacao.make_graph import Make_Graph
 def index(request):
     if request.method == 'POST' and request.FILES['rede-txt']:
         rede = request.FILES['rede-txt']
-        print(rede)
-        direcionada = request.POST['direcionada']
+
+        if request.POST['direcionada'] == 'on':
+            direcionada = True
+        else:
+            direcionada = False
 
         objeto_rede = Rede.objects.create(arquivo=rede)
         objeto_rede.save()
@@ -19,7 +22,6 @@ def index(request):
         
         contexto = grafo.monta_contexto()
 
-        print(contexto)
         return render(request, 'index.html', contexto)
     return render(request, 'index.html')
 

@@ -7,14 +7,12 @@
 
 <div class="container-fluid d-flex flex-wrap">
   <div class="container">
-      <div class="shadow rounded border mr-auto">
-        <div class="rounded">
-          {% if imagem %}
-          <img src="static/redes/{{imagem}}" class="img-fluid" alt="...">
-          {% else %}
-          <img src="{% static 'img/Rede-IFMT.svg' %}" class="img-fluid" alt="...">
-          {% endif %}
-        </div>
+      <div class="rounded">
+        {% if imagem %}
+        <img src="static/redes/{{imagem}}" class="img-fluid" alt="...">
+        {% else %}
+        <img src="{% static 'img/Rede-IFMT.svg' %}" class="img-fluid" alt="...">
+        {% endif %}
       </div>
       <form class="form" method="POST" action="{% url 'ConectaIF' %}" enctype="multipart/form-data">
         {% csrf_token %}
@@ -24,7 +22,7 @@
         <div>
           <input type="checkbox" id="direcionada" name="direcionada"> Direcionada </input>
         </div>
-        <button style=" margin: 2em; float: right;" class="btn btn-primary right">
+        <button class="btn btn-primary right w-50">
           Enviar
         </button>
       </form>
