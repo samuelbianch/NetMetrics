@@ -2,10 +2,14 @@ from datetime import datetime
 import igraph
 import time
 from aplicacao.plotly import Gerar_Grafico
+from .utils import Utils
 
 class Make_Graph():
 
 	def __init__(self, lista_arestas, direcionada):
+		self.cria_arquivo(lista_arestas, direcionada)
+
+	def cria_arquivo(self, lista_arestas, direcionada):
 		today = datetime.now()
 		ano = str(today.year)
 		grafo = igraph.Graph()
@@ -27,12 +31,7 @@ class Make_Graph():
 		self.grafo = grafo
 
 	def plot_graph(self):
-		i = 0
-		vertices = self.grafo.vcount()
-		vindex=[""]*vertices
-		while i < vertices:
-			vindex[i] = i
-			i += 1
+		vindex = Utils.make_vindex(self.grafo.vcount())
 		nome_da_imagem = str(time.time()) + ".svg"
 		igraph.plot(self.grafo, "aplicacao/static/redes/" + nome_da_imagem,  bbox=(800, 350), vertex_label=vindex, margin=20, edge_arrow_size=0.3, vertex_color=(0, 0, 0), vertex_label_color=(255, 255, 255), vertex_dist=200, vertex_label_size=8)
 		return nome_da_imagem

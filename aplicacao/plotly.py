@@ -17,7 +17,15 @@ class Gerar_Grafico():
         # Use `hole` to create a donut-like pie chart
         fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
         fig.update(layout_showlegend=False)
-        fig.update({'layout': {'xaxis' : {'color': '#229954'}}})
+        fig.update({'layout': {
+            'xaxis' : {
+                'color': '#229954'
+                },
+            'height': 300,
+            'width': 300,
+            }
+            
+        })
 
         html = fig.to_html()
 
