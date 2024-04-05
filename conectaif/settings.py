@@ -72,8 +72,8 @@ DATABASES = {
         'NAME': os.environ.get('POSTGRES_NAME', 'conectaif'),
         'USER': os.environ.get('POSTGRES_USER', 'postgres'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'admin'),
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'HOST': os.environ.get('SQL_HOST', '127.0.0.1'),
+        'PORT': os.environ.get('SQL_PORT', '5432')
     }
 }
 
