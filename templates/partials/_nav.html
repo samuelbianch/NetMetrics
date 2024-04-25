@@ -1,12 +1,24 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
 <nav class="navbar">
     <div class="container-fluid">
-      <a style="text-decoration: none;" href="{% url 'ConectaIF' %}"><span class="navbar-brand mb-0 h1" style="font-family: Rubiko iso, Arial, Helvetica, sans-serif;">ConectaIF</span></a>
+        <a style="text-decoration: none;" href="{% url 'ConectaIF' %}"><span class="navbar-brand mb-0 title ml-5">ConectaIF</span></a>
+        <div class="d-inline">
+            <a href="#" style="text-decoration: none;" class="p-3 text-white">Como usar</a>
+            <a href="#" style="text-decoration: none;" class="p-3 text-white">Pesquisas</a>
+            <a href="#" style="text-decoration: none;" class="p-3 text-white">Redes Complexas</a>
+            <a href="#" style="text-decoration: none;" class="p-3 text-white">Sobre</a>
+        </div>
     </div>
 </nav>
 
 <style>
-    .h1 {
-        margin-left: 5% !important;
+    .title {
+        font-family: "Sriracha", cursive;
+        font-weight: 400;
+        font-style: normal;
+        margin-left: 20% !important;
         color: #FFFFFF !important;
         font-size: 20pt !important;
     }
@@ -16,5 +28,6 @@
     nav .container-fluid {
         margin: 0 !important;
         background-image: linear-gradient(to right, #00B51E, #005B0F) !important;
+        height: 55px;
     }
 </style>
