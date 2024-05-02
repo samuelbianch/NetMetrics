@@ -2,5 +2,23 @@
 {% load static %}
 {% block content %}
 {% include "partials/_nav.html"  %}
+
+<div class="container-fluid mt-5">
+    {% if artigos %}
+    {% for artigo in artigos %}
+        <div class="card text-left">
+        <img class="card-img-top" src="holder.js/100px180/" alt="">
+        <div class="card-body">
+            <h4 class="card-title">{{ artigo.nome_artigo }}</h4>
+            <p class="card-text">{{ artigo.resumo }}</p>
+                <p class="">{{ autor }}</p><br>
+        </div>
+        </div>
+    {% endfor %}
+    {% else %}
+    <h1>Nenhum artigo publicado</h1>
+    {% endif %}
+</div>
+
 {% include "partials/_footer.html" %}
 {% endblock %}

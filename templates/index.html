@@ -6,7 +6,7 @@
 {% include 'partials/_nav.html' %}
 
 <div class="" id="apresentacao">
-  <div class="container text-white pt-5">
+  <div class="container text-black pt-5">
     <span class="h1">Faça pesquisas utilizando redes complexas</span><br>
     <span class="h5">Você não precisa reeinventar a roda!</span>
   </div>
@@ -15,26 +15,50 @@
   </div>
 </div>
 
-<div class="container d-flex justify-content-around">
+<div class="container d-flex text-center mt-5">
   <div class="col-sm">
     <div class="card">
       <div class="card-body">
-        Aqui descreva algo
+        <img src="/media/img/network-wired.svg" style="width: 30px;" class="fa-solid fa-network-wired"></img>
+        <h5 class="card-title">Por que usar redes complexas?</h5>
+        <p>Devemos usar redes complexas quando queremos abstrair ideias vistas no mundo real, para um modelo puramente computacional.</p>
       </div>
     </div>
   </div>
   <div class="col-sm">
     <div class="card">
       <div class="card-body">
-        Aqui descreva algo
+        <img src="/media/img/network-wired.svg" style="width: 30px;" class="fa-solid fa-network-wired"></img>
+        <h5 class="card-title">Por que usar redes complexas?</h5>
+        <p>Devemos usar redes complexas quando queremos abstrair ideias vistas no mundo real, para um modelo puramente computacional.</p>
       </div>
     </div>
   </div>
   <div class="col-sm">
     <div class="card">
       <div class="card-body">
-        Aqui descreva algo
+        <img src="/media/img/network-wired.svg" style="width: 30px;" class="fa-solid fa-network-wired"></img>
+        <h5 class="card-title">Por que usar redes complexas?</h5>
+        <p>Devemos usar redes complexas quando queremos abstrair ideias vistas no mundo real, para um modelo puramente computacional.</p>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-5" id="psic">
+  <div class="d-flex flex-column float-right" style="margin-left: 50%; margin-right: 10%;">
+    <div>
+      <h1 class="mt-5">Para você psicólogo(a)</h1>
+    </div>
+    <div>
+      <span><h5 class="text-justify">
+        Faça pesquisas que contemplem o conhecimento dos processos mentais humano,
+        usufruindo de uma abordagem da matemática computacional,
+        sem necessariamente ter o conhecimento computacional.</h5>
+      </span>
+    <div class="mt-5 d-flex justify-content-center">
+      <a class="btn btn-success" href="#">Tutorial</a>
+    </div>
     </div>
   </div>
 </div>
@@ -44,12 +68,20 @@
 
 <style>
   #apresentacao{
-    background-image: url('/media/img/rede_complexa.gif');
+    background-image: url('/media/img/rede_exemplo.png');
     background-size: cover;
     height: 300px;
     padding:0;
     margin:0;
-}
+  }
+
+  #psic{
+    background-image: url('/media/img/psicologa.jpg');
+    background-size: cover;
+    height: 450px;
+    padding:0;
+    margin:0;
+  }
 </style>
 
 {% endblock %}

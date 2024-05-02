@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Artigo, Autor, Rede
 # Register your models here.
 class Artigos(admin.ModelAdmin):
-    list_display = ('doi', 'nome_artigo')
+    list_display = ('nome_artigo', 'doi')
     list_display_links = ('doi', 'nome_artigo')
     search_fields = ('autores', 'nome_artigo', )
     list_per_page = 10

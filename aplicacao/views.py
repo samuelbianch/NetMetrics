@@ -47,7 +47,12 @@ class RedesViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 def artigos_publicados(self):
-    return render(None, 'artigos_publicados.html')
+    artigos = Artigo.objects.all()
+    print("\n\n\nArtigos: ", artigos)
+    context = {
+        'artigos': artigos
+    }
+    return render(None, 'artigos_publicados.html', context)
 
 def como_fazer(self):
     return render(None, 'como_fazer.html')
