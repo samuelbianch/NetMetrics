@@ -7,14 +7,14 @@
 
 <div class="container-fluid d-flex flex-wrap">
   <div class="container">
-      <div class="rounded">
+      <div class="rounded" id="rede-modelada">
         {% if imagem %}
-        <img src="static/redes/{{imagem}}" class="img-fluid" alt="...">
+        <img src="{% static 'redes/' %}{{imagem}}" class="img-fluid" alt="Rede modelada">
         {% else %}
-        <img src="media/img/rede_exemplo.png" class="img-fluid" alt="...">
+        <img src="/media/img/rede_exemplo.png" class="img-fluid" alt="Rede modelada">
         {% endif %}
       </div>
-      <form class="form" method="POST" action="{% url 'ConectaIF' %}" enctype="multipart/form-data">
+      <form class="form" method="POST" action="{% url 'make_graph' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="input-group">
           <input type="file" name="rede-txt" class="form-control p-3" placeholder="Insira seu arquivo aqui" id="input-txt" />
@@ -151,6 +151,10 @@
 
   .card-text {
     font-size: 16pt;
+  }
+
+  #rede-modelada{
+    width: 60%;
   }
 </style>
 

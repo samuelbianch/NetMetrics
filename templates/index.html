@@ -11,7 +11,7 @@
     <span class="h5">Você não precisa reeinventar a roda!</span>
   </div>
   <div class="container pt-5 right d-grid gap-2 d-md-flex justify-content-md-end">
-    <button type="button" class="right btn btn-primary" style="text-align: right; background-color: #00B51E;">Quero usar!</button>
+    <a href="{% url 'make_graph' %}" type="button" class="right btn btn-primary" style="text-align: right; background-color: #00B51E;">Quero usar!</a>
   </div>
 </div>
 
@@ -63,6 +63,24 @@
   </div>
 </div>
 
+<div class="mt-5" id="socio">
+  <div class="d-flex flex-column float-right text-white" style="margin-left: 50%; margin-right: 10%;">
+    <div>
+      <h1 class="mt-5">Para você sociólogo(a)</h1>
+    </div>
+    <div>
+      <span><h5 class="text-justify">
+        Faça pesquisas que contemplem o conhecimento do comportamento humano,
+        e suas interações sociais por meio de modelos de redes de interações,
+        sem necessariamente ter o conhecimento computacional.</h5>
+      </span>
+    <div class="mt-5 d-flex justify-content-center">
+      <a class="btn btn-success" href="#">Tutorial</a>
+    </div>
+    </div>
+  </div>
+</div>
+
 
 {% include 'partials/_footer.html' %}
 
@@ -76,7 +94,15 @@
   }
 
   #psic{
-    background-image: url('/media/img/psicologa.jpg');
+    background-image: url('/media/img/psicologa_2.jpg');
+    background-size: cover;
+    height: 450px;
+    padding:0;
+    margin:0;
+  }
+
+  #socio{
+    background-image: url('/media/img/sociologia.jpg');
     background-size: cover;
     height: 450px;
     padding:0;

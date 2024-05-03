@@ -36,6 +36,6 @@ class Rede(models.Model):
     def __str__(self):
         return self.criado_em
 
-    arquivo = models.FileField(upload_to='redes/%Y%m%d')
+    arquivo = models.FileField(upload_to='redes/%Y/%m/%d')
     criado_em = models.DateTimeField(auto_now_add=True)
 

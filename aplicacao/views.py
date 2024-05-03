@@ -7,22 +7,6 @@ from aplicacao.serializer import AutorSerializer, ArtigoSerializer, RedeSerializ
 from aplicacao.make_graph import Make_Graph
 
 def index(request):
-    if request.method == 'POST' and request.FILES['rede-txt']:
-        rede = request.FILES['rede-txt']
-
-        if request.POST['direcionada'] == 'on':
-            direcionada = True
-        else:
-            direcionada = False
-
-        objeto_rede = Rede.objects.create(arquivo=rede)
-        objeto_rede.save()
-
-        grafo = Make_Graph(rede, direcionada)
-        
-        contexto = grafo.monta_contexto()
-
-        return render(request, 'index.html', contexto)
     return render(request, 'index.html')
 
 class AutoresViewSet(viewsets.ModelViewSet):
@@ -48,7 +32,6 @@ class RedesViewSet(viewsets.ModelViewSet):
 
 def artigos_publicados(self):
     artigos = Artigo.objects.all()
-    print("\n\n\nArtigos: ", artigos)
     context = {
         'artigos': artigos
     }
@@ -56,3 +39,22 @@ def artigos_publicados(self):
 
 def como_fazer(self):
     return render(None, 'como_fazer.html')
+
+def make_graph(request):
+    if request.method == 'POST' and request.FILES['rede-txt']:
+        rede = request.FILES['rede-txt']
+
+        if request.POST['direcionada'] == 'on':
+            direcionada = True
+        else:
+            direcionada = False
+
+        objeto_rede = Rede.objects.create(arquivo=rede)
+        objeto_rede.save()
+
+        grafo = Make_Graph(rede, direcionada)
+        
+        contexto = grafo.monta_contexto()
+
+        return render(request, 'make_graph.html', contexto)
+    return render(request, 'make_graph.html')

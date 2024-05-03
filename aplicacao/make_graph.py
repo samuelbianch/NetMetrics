@@ -24,7 +24,7 @@ class Make_Graph():
 		else:
 			dia = str(today.day)
 
-		with open("media/redes/"+ ano + mes + dia + "/" + lista_arestas.name) as arquivo:
+		with open(f"media/redes/"+ ano + "/" + mes + "/" + dia + "/" + lista_arestas.name) as arquivo:
 			grafo = grafo.Read_Edgelist(arquivo, directed=direcionada)
 			arquivo.close()
 
