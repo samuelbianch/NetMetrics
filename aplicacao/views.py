@@ -31,7 +31,7 @@ class RedesViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 def artigos_publicados(self):
-    artigos = Artigo.objects.all()
+    artigos = Artigo.objects.prefetch_related('autores')
     context = {
         'artigos': artigos
     }
@@ -58,3 +58,6 @@ def make_graph(request):
 
         return render(request, 'make_graph.html', contexto)
     return render(request, 'make_graph.html')
+
+def sobre(self):
+    return render(None, 'sobre.html')

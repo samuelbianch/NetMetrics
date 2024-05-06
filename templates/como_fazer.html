@@ -3,11 +3,34 @@
 {% block content %}
 {% include 'partials/_nav.html' %}
 
-<div class="container">
-    <h1 class"center">Tutorial</h1>
-    <h3>Criando a rede:</h3>
+<div class="container mt-5">
+    <h1 class="center">Tutorial</h1>
+    <h3>Criando a rede</h3>
+    <p>
     Você deve modelar a sua pesquisa como uma rede complexa, através de uma lista de arestas
     que representará as relações entre os individuos estudados.
+    </p>
+    
+    <h3>Arquivo de entrada</h3>
+    <p>Uma lista de arestas no seguinte padrão: sempre o primeiro vértice deve começar com zero,
+        e os vértices devem seguir uma sequência de número inteiros. O arquivo deve ser um .txt
+    </p>
+    <p>Exemplo:</p>
+    <h5>0 1<br>
+        0 2<br>
+        1 2<br>
+        1 0<br>
+        2 1<br>
+    </h5>
+    <p>Em termos práticos essa lista de arestas pode ser lida como, o vértice 0 liga com o vértice 1,
+        0 liga com 2, 1 liga com 2, 1 liga com 0 e 2 liga com 1.
+    </p>
+
+    <p>O retorno esperado para esta lista de arestas é:</p>
+    <div class="w-100 d-flex justify-content-center"><img class="w-50" src="/media/img/exemplo.svg"></div>
+
+    <h3>Usando o sistema</h3>
+    <p>Clique em "Quero usar!" na página inicial.</p>
 </div>
 {% include 'partials/_footer.html' %}
 {% endblock %}

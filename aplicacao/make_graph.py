@@ -33,7 +33,7 @@ class Make_Graph():
 	def plot_graph(self):
 		vindex = Utils.make_vindex(self.grafo.vcount())
 		nome_da_imagem = str(time.time()) + ".svg"
-		igraph.plot(self.grafo, "aplicacao/static/redes/" + nome_da_imagem,  bbox=(800, 350), vertex_label=vindex, margin=20, edge_arrow_size=0.3, vertex_color=(0, 0, 0), vertex_label_color=(255, 255, 255), vertex_dist=200, vertex_label_size=8)
+		igraph.plot(self.grafo, "aplicacao/static/redes/" + nome_da_imagem,  bbox=(800, 350), vertex_label=vindex, margin=20, edge_arrow_size=0.8, vertex_color=(0, 0, 0), vertex_label_color=(255, 255, 255), vertex_dist=200, vertex_label_size=25, vertex_size=40)
 		return nome_da_imagem
 
 	def monta_contexto(self):

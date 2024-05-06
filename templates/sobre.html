@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include "partials/_nav.html"  %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container mt-5">
+
+    <h1>Sobre</h1>
+    <p style="text-align: justify;">
+        Este é um software desenvolvido para a obtenção do diploma de Bacharel em Engenharia da Computação,
+        feito no Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso. O trabalho é contemplado por
+        diversas técnicas de pesquisas em redes complexas, que fora adquirida pelo desenvolvedor, concumitante ao 
+        perído da graduação. Pretende-se com este produto, facilitar a vida de pesquisadores que queiram usar os artefatos
+        de Redes Complexas. O software foi desenvolvido com Django (um framework Python) e conta com diversas outras
+        tecnologias como o Docker para o deploy da aplicação.
+    </p>
+
+    <h2>Motivação</h2>
+    <p style="text-align: justify;">
+        Analisar e fundamentar os aspectos de uma Rede Complexa tende a ser uma tarefa trabalhosa, fazendo
+        com que o pesquisador seja detentor de um conhecimento elevado acerca de diversas
+        técnicas de análise de relações sociais. Portanto uma ideia geral é que softwares
+        automatizem processos, diminuem a mão de obra humana e transferem as competências do conhecimento que por muitas das vezes não se tem em todo individuo,
+        para as máquinas. Sendo assim pesquisadores não precisariam ter um conhecimento
+        técnico de inúmeras áreas do conhecimento para elaborar uma pesquisa a partir de
+        um conhecimento técnico de computação, por exemplo.
+    </p>
+
+    <h2>Desenvolvido por</h2>
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card mb-4">
+                <div class="card-body text-center">
+                  <img src="/media/img/samuel.jpeg" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                  <h5 class="my-3">Samuel Bianch</h5>
+                  <p class="text-muted mb-1">Engenheiro de Computação</p>
+                  <p class="text-muted mb-4">Cuiabá, MT - Brasil</p>
+                  <div class="d-flex justify-content-center mb-2">
+                    <a href="https://github.com" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark" style="margin-right: 10px;"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+                    <a href="https://wa.me/+5565999073569" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-success"><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Nome completo</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">Samuel Oliveira Silva Bianch</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">samuelbianch38@gmail.com</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Telefone</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">(65) 9 9907-3569</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Profissão</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">Desenvolvedor de software</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Área de pesquisa</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">Redes complexas, análise estatística e algoritmos</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Currículo Lattes</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">http://lattes.cnpq.br/4585329097906649</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+</div>
+{% include "partials/_footer.html" %}
+{% endblock %}

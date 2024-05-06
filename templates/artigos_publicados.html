@@ -11,7 +11,9 @@
         <div class="card-body">
             <h4 class="card-title">{{ artigo.nome_artigo }}</h4>
             <p class="card-text">{{ artigo.resumo }}</p>
-                <p class="">{{ autor }}</p><br>
+                {% for autor in artigo.autores.all %}
+                <a href="{{ autor.link_lattes }}" class="">{{ autor.nome_autor }}</a><br>
+                {% endfor %}
         </div>
         </div>
     {% endfor %}
