@@ -22,8 +22,8 @@ class Artigo(models.Model):
     def __str__(self):
         return self.nome_artigo
 
-    nome_artigo = models.CharField(max_length=100)
-    doi = models.TextField(blank=True)
+    nome_artigo = models.CharField(max_length=200)
+    doi = models.TextField(blank=True, help_text='Link para acesso ao trabalho')
     autores = models.ManyToManyField(Autor)
     resumo = models.TextField(blank=True)
 

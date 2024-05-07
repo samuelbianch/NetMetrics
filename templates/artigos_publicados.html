@@ -3,18 +3,29 @@
 {% block content %}
 {% include "partials/_nav.html"  %}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="container-fluid mt-5">
     {% if artigos %}
     {% for artigo in artigos %}
-        <div class="card text-left">
-        <img class="card-img-top" src="holder.js/100px180/" alt="">
-        <div class="card-body">
-            <h4 class="card-title">{{ artigo.nome_artigo }}</h4>
-            <p class="card-text">{{ artigo.resumo }}</p>
-                {% for autor in artigo.autores.all %}
-                <a href="{{ autor.link_lattes }}" class="">{{ autor.nome_autor }}</a><br>
-                {% endfor %}
-        </div>
+        <div class="card d-flex flex-row">
+            <div class="p-5 align-itens-center d-flex align-items-center">
+                <i class="fa fa-newspaper-o" style="font-size: 80px;" aria-hidden="true"></i>
+            </div>
+            <div class="card-body float-right">
+                <h4 class="card-title"><a href="{{ artigo.doi }}" class="text-black" style="text-decoration: none;">{{ artigo.nome_artigo }}</a></h4>
+                <p class="card-text">{{ artigo.resumo }}</p>
+                {% with total_autores=artigo.autores.all|length %}
+                    {% for autor in artigo.autores.all %}
+                        <a target="_blank"  href="{{ autor.link_lattes }}" class="text-black" style="text-decoration: none;">{{ autor.nome_autor }}
+                        {% if forloop.counter != total_autores %}
+                            , </a>
+                        {% else %}
+                            .</a>
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
+            </div>
         </div>
     {% endfor %}
     {% else %}
