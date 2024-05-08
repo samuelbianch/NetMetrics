@@ -11,6 +11,7 @@ class Gerar_Grafico():
 
     def gerar_donut(label, value, arq):
 
+        0 if value < 0 else value
         labels = ['', label]
         values = [1 - value, value]
 

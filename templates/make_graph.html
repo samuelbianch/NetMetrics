@@ -57,13 +57,14 @@
  
 
   <div class="container">
-    <div class="row">
+    <div class="row w-100 justify-content">
       <div class="col-sm">
         <div class="card" style="width: 18rem;">
           <!--<img src="" class="card-img-top" alt="">-->
           <div class="card-body">
             {% include "partials/_grafico_reciprocidade.html" %}
             <h1 class="card-text text-center">Reciprocidade</h1>
+            <span class="text-center" style="display: flex; text-align: center;">A tendência de vértices se conectarem de forma mútua</span>
           </div>
         </div>
       </div>
@@ -73,6 +74,7 @@
           <div class="card-body">
             {% include "partials/_grafico_assortatividade.html" %}
             <h1 class="card-text text-center">Assortatividade</h1>
+            <span class="text-center" style="display: flex; text-align: center;">A tendência de vértices de mesmo grau se conectarem</span>
           </div>
         </div>  
       </div>
@@ -81,6 +83,7 @@
           <div class="card-body">
             {% include "partials/_grafico_transmedia.html" %}
             <h1 class="card-text text-center">Transitividade Média</h1>
+            <span class="text-center" style="display: flex; text-align: center;">A tendência da formação de comunidades na rede</span>
           </div>
         </div>
     </div>

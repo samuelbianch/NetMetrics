@@ -6,6 +6,7 @@ src/__pycache__/
 static/
 media/redes/
 node_modules/
+data/
 ### Python ###
 # Byte-compiled / optimized / DLL files
 

@@ -9,4 +9,3 @@ RUN pip install --upgrade setuptools
 RUN pip3 install --force-reinstall --no-cache-dir pycairo==1.26.0
 RUN pip install -r requirements.txt
 COPY . /code/
-RUN python manage.py migrate
