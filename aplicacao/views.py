@@ -1,3 +1,5 @@
+import json
+from django.http import Http404, HttpResponse
 from django.shortcuts import render
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -5,6 +7,10 @@ from rest_framework import viewsets
 from aplicacao.models import Autor, Rede, Artigo
 from aplicacao.serializer import AutorSerializer, ArtigoSerializer, RedeSerializer
 from aplicacao.make_graph import Make_Graph
+import zipfile
+from io import BytesIO
+import os
+from conectaif import settings
 
 def index(request):
     return render(request, 'index.html')
@@ -60,3 +66,27 @@ def make_graph(request):
 
 def sobre(self):
     return render(None, 'sobre.html')
+
+def download_images(request):
+
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            image_paths = data.get('image_paths', [])
+        except json.JSONDecodeError:
+            raise Http404("Invalid JSON data")
+
+        if not image_paths:
+            raise Http404("As imagens não foram carregadas corretamente.")
+            
+    zip_buffer = BytesIO()
+
+    with zipfile.ZipFile(zip_buffer, 'w') as zip_file:
+        for image_path in image_paths:
+            zip_file.write(os.path.join(settings.STATICFILES_DIRS[0], image_path), os.path.basename(image_path))
+    
+    zip_buffer.seek(0)
+
+    response = HttpResponse(zip_buffer, content_type='application/zip')
+    response['Content-Disposition'] = 'attachment; filename=imagens.zip'
+    return response
