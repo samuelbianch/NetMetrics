@@ -1,19 +1,29 @@
 import igraph
 from .utils import Utils
+import uuid
 
 class Make_Community():
 
-    def __init__(self):
-        pass
+    def __init__(self, grafo):
+        self.grafo = grafo
+        self.vindex = Utils.make_vindex(self.grafo.vcount())
 
-    def gerador_comunidaes(self, caminho_origem, caminho_destino):
-        grafo = igraph.Graph()
-        grafo = grafo.Read_Edgelist(f"{caminho_origem}.txt", directed=False)
-
-        vindex = Utils.make_vindex(grafo.vcount())
+    def gerador_comunidaes_blondel(self):
 
         comunidades = igraph.Graph.community_multilevel(
-            grafo, weights=None)
+            self.grafo, weights=None)
 
-        igraph.plot(comunidades, f"./{caminho_destino}/comunidades.png", edge_width=1, bbox=(
-            800, 350), mark_groups=True, vertex_label_size=10, vertex_label=vindex, vertex_dist=200)
+        nome_da_imagem = f"{uuid.uuid4()}.svg"
+        igraph.plot(comunidades, f"aplicacao/static/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
+
+        return nome_da_imagem
+    
+    def gerador_comunidades_betweenness(self):
+
+        comunidades = igraph.Graph.community_edge_betweenness(self.grafo, clusters=3, directed=False, weights=None).as_clustering()
+
+        nome_da_imagem = f"{uuid.uuid4()}.svg"
+        igraph.plot(comunidades, f"aplicacao/static/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
+        
+        return nome_da_imagem
+    

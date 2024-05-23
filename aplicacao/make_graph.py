@@ -3,6 +3,7 @@ import igraph
 import time
 from aplicacao.plotly import Gerar_Grafico
 from .utils import Utils
+from aplicacao import make_community
 
 class Make_Graph():
 
@@ -35,6 +36,17 @@ class Make_Graph():
 		nome_da_imagem = str(time.time()) + ".svg"
 		igraph.plot(self.grafo, "aplicacao/static/redes/" + nome_da_imagem,  bbox=(800, 350), vertex_label=vindex, margin=20, edge_arrow_size=0.8, vertex_color=(0, 0, 0), vertex_label_color=(255, 255, 255), vertex_dist=200, vertex_label_size=25, vertex_size=40)
 		return nome_da_imagem
+	
+	def plot_comunidade_blondel(self):
+		comunidade = make_community.Make_Community(grafo=self.grafo)
+		nome_da_imagem = comunidade.gerador_comunidaes_blondel()
+		return nome_da_imagem
+	
+	def plot_comunidade_betweenness(self):
+		comunidade = make_community.Make_Community(grafo=self.grafo)
+		nome_da_imagem = comunidade.gerador_comunidades_betweenness()
+		return nome_da_imagem
+		
 
 	def monta_contexto(self):
 		arestas = self.grafo.ecount()
@@ -54,7 +66,9 @@ class Make_Graph():
 			"reciprocidade": round(reciprocidade,2),
 			"assortatividade": round(assortatividade,2),
 			"mediatrans": round(mediatrans,2),
-			"imagem" : self.plot_graph()
+			"imagem" : self.plot_graph(),
+			"comunidade_blondel": self.plot_comunidade_blondel(),
+			"comunidade_betweenness": self.plot_comunidade_betweenness()
 		}
 
 		return contexto

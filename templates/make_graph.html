@@ -52,6 +52,34 @@
   </div>
   
 
+  <div class="container">
+    <div class="row">
+      <div class="card text-start">
+        {% if comunidade_blondel %}
+        <img class="card-img-top" src="{% static 'redes/comunidades/' %}{{comunidade_blondel}}" alt="Title" />
+        {% else %}
+        <p>Sem imagem</p>
+        {% endif %}
+        <div class="card-body">
+          <h4 class="card-title">Comunidade Multilevel</h4>
+          <p class="card-text">Blondel</p>
+        </div>
+      </div>
+      
+      <div class="card text-start">
+        {% if comunidade_betweenness %}
+          <img class="card-img-top" src="{% static 'redes/comunidades/' %}{{comunidade_betweenness}}" alt="Title" />
+        {% else %}
+          <p>Sem imagem</p>
+        {% endif %}
+        <div class="card-body">
+          <h4 class="card-title">Comunidade por Betweenness</h4>
+          <p class="card-text">Betweenness Centrality</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
   <!--Componente para importar a lista de arestas-->
  

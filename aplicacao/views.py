@@ -43,8 +43,7 @@ def como_fazer(self):
 def make_graph(request):
     if request.method == 'POST' and request.FILES['rede-txt']:
         rede = request.FILES['rede-txt']
-
-        if request.POST['direcionada'] == 'on':
+        if request.POST.get('direcionada') == 'on':
             direcionada = True
         else:
             direcionada = False
