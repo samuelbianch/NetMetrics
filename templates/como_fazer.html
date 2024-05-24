@@ -6,9 +6,12 @@
 <div class="container mt-5">
     <h1 class="center">Tutorial</h1>
     <h3>Criando a rede</h3>
-    <p>
-    Você deve modelar a sua pesquisa como uma rede complexa, através de uma lista de arestas
-    que representará as relações entre os individuos estudados.
+    <p class="text-justify">
+        Para que um grafo possa ser representado, é essencial que o estudo obtenha uma forma de representar estes grafos, 
+        mesmo que não de forma visual, mas seja um padrão já utilizado na comunidade. Optou-se então por usar uma lista de 
+        arestas <i class="fa fa-italic" aria-hidden="true">(Edge List)</i>, que é a representação da adjacência dos vértices em um grafo. Basicamente seu conceito 
+        é uma lista que deve conter os vértices numerados por índices, no qual o vértice <i class="fa fa-italic" aria-hidden="true">A</i> aponta para o vértice 
+        <i class="fa fa-italic" aria-hidden="true">B</i>.
     </p>
     
     <h3>Arquivo de entrada</h3>
@@ -30,7 +33,14 @@
     <div class="w-100 d-flex justify-content-center"><img class="w-50" src="/media/img/exemplo.svg"></div>
 
     <h3>Usando o sistema</h3>
-    <p>Clique em "Quero usar!" na página inicial.</p>
+    <h5 class="mt-5">1. Clique em "Quero usar!" na página inicial.</h5>
+    <img class="w-100" src="/media/img/primeiro_passo.gif" alt="Primeiro passo">
+    <h5 class="mt-5">2. Clique em "Escolher arquivo" para poder escolher a lista de arestas.</h5>
+    <img class="w-100" src="/media/img/segundo_passo.gif" alt="Segundo passo">
+    <h5 class="mt-5">3. Escolha a lista de arestas da sua rede e marque a opção "Direcionada", se ela for uma rede de arestas direcionadas.</h5>
+    <img class="w-100" src="/media/img/terceiro_passo.gif" alt="Terceiro passo">
+    <h5 class="mt-5">4. Por fim, basta apenas fazer as devidas análises sobre a rede, você pode também fazer o download das imagens e do arquivo com dados de saída.</h5>
+    <img class="w-100" src="/media/img/quarto_passo.gif" alt="Quarto passo">
 </div>
 {% include 'partials/_footer.html' %}
 {% endblock %}

@@ -5,16 +5,15 @@
 
 {% include 'partials/_nav.html' %}
 
-<div class="container-fluid d-flex flex-wrap">
   <div class="container">
-      <div class="rounded" id="rede-modelada">
+      <div class="rounded mb-3" id="rede-modelada">
         {% if imagem %}
-        <img src="{% static 'redes/' %}{{imagem}}" class="img-fluid" alt="Rede modelada">
+        <img src="{% static 'redes/' %}{{imagem}}" class="img-fluid text-center" alt="Rede modelada">
         {% else %}
-        <img src="/media/img/rede_exemplo.png" class="img-fluid" alt="Rede modelada">
+        <!--<img src="/media/img/rede_exemplo.png" class="img-fluid text-center" alt="Rede modelada">-->
         {% endif %}
       </div>
-      <form class="form" method="POST" action="{% url 'make_graph' %}" enctype="multipart/form-data">
+      <form class="form w-100" method="POST" action="{% url 'make_graph' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="input-group">
           <input type="file" name="rede-txt" class="form-control p-3" placeholder="Insira seu arquivo aqui" id="input-txt" />
@@ -22,9 +21,37 @@
         <div>
           <input type="checkbox" id="direcionada" name="direcionada"> Direcionada </input>
         </div>
-        <button class="btn btn-primary right w-50">
-          Enviar
-        </button>
+        <div class="mb-3">
+          <label for="" class="form-label">Comunidade</label>
+          <select
+            class="form-select form-select-lg input-txt"
+            name="comunidade"
+            id="comunidade"
+          >
+            <option selected>Selecione um método de geração de comunidade</option>
+            <option value="0">Betweenness (Girvan-Newman)</option>
+            <option value="1">Multilevel (Blondel)</option>
+            <option value="2">Infomap</option>
+            <option value="3">FastGreedy</option>
+          </select>
+          <div class="mb-3">
+            <label for="" class="form-label">Pontuação dos vértices</label>
+            <select
+              class="form-select form-select-lg input-txt"
+              name="centralidade"
+              id="centralidade"
+            >
+              <option selected>Selecione um método de pontuação de acordo com a centralidade</option>
+              <option value="0">Grau</option>
+              <option value="1">Betweenness</option>
+              <option value="2">Closeness</option>
+            </select>
+        </div>
+        <div class="w-100 text-center">
+          <button class="btn btn-primary right w-25">
+            Enviar
+          </button>
+        </div>
       </form>
       {% if imagem %}
       <div>      
@@ -43,7 +70,7 @@
         <thead>
             <tr>
               <th>Arestas</th>
-              <th>Vertices</th>
+              <th>Vértices</th>
               <th>Reciprocidade</th>
               <th>Assortatividade</th>
               <th>Transitividade média</th>
@@ -64,28 +91,27 @@
   
 
   <div class="container">
+    <h2>Visualize as comunidades e pontuações dos vértices</h2>
     <div class="row">
       <div class="card text-start">
-        {% if comunidade_blondel %}
-        <img class="card-img-top" src="{% static 'redes/comunidades/' %}{{comunidade_blondel}}" alt="Title" />
+        {% if comunidade %}
+        <img class="card-img-top" src="{% static 'redes/comunidades/' %}{{ comunidade }}" alt="Title" />
         {% else %}
         <p>Adicione uma rede complexa</p>
         {% endif %}
         <div class="card-body">
-          <h4 class="card-title">Comunidade Multilevel</h4>
-          <p class="card-text">Blondel</p>
+          <h4 class="card-title">Comunidade da rede inserida</h4>
         </div>
       </div>
       
       <div class="card text-start">
-        {% if comunidade_betweenness %}
-          <img class="card-img-top" src="{% static 'redes/comunidades/' %}{{comunidade_betweenness}}" alt="Title" />
+        {% if centralidade %}
+          <img class="card-img-top" src="{% static 'redes/centralidade/' %}{{ centralidade }}" alt="Title" />
         {% else %}
           <p>Adicione uma rede complexa</p>
         {% endif %}
         <div class="card-body">
-          <h4 class="card-title">Comunidade por Betweenness</h4>
-          <p class="card-text">Betweenness Centrality</p>
+          <h4 class="card-title">Pontuação dos vértices</h4>
         </div>
       </div>
     </div>
@@ -196,8 +222,8 @@
   }
 
   .box-rede {
-    max-width: 60%;
-    height: 60%;
+    max-width: 100%;
+    height: 100%;
     border: 10px #005B0F;
     background-image: url('/static/img/Rede-IFMT.svg') no-repeat fixed;
   }
@@ -224,7 +250,7 @@
     margin: 2em !important;
   }
 
-  #input-txt {
+  .input-txt {
     border: 0;
     box-shadow: #5D5D5D;
     border-radius: 2em;
@@ -239,7 +265,7 @@
   }
 
   #rede-modelada{
-    width: 60%;
+    width: 80%;
   }
 </style>
 

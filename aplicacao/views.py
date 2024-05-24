@@ -49,6 +49,9 @@ def como_fazer(self):
 def make_graph(request):
     if request.method == 'POST' and request.FILES['rede-txt']:
         rede = request.FILES['rede-txt']
+        comunidade = request.POST.get('comunidade')
+        centralidade = request.POST.get('centralidade')
+
         if request.POST.get('direcionada') == 'on':
             direcionada = True
         else:
@@ -57,7 +60,7 @@ def make_graph(request):
         objeto_rede = Rede.objects.create(arquivo=rede)
         objeto_rede.save()
 
-        grafo = Make_Graph(rede, direcionada)
+        grafo = Make_Graph(rede, direcionada, comunidade, centralidade)
         
         contexto = grafo.monta_contexto()
 
