@@ -15,5 +15,7 @@ urlpatterns = [
     path('artigos_publicados', views.artigos_publicados, name='artigos_publicados'),
     path('como_fazer', views.como_fazer, name='como_fazer'),
     path('sobre/', views.sobre, name='sobre'),
-    path('download-images/', views.download_images, name='download_images')
+    path('download-images/', views.download_images, name='download_images'),
+    path('generate_pdf/', views.render_pdf_view, name='generate_pdf'),
+    path('propriedades/', views.propriedades, name='propriedades')
 ]

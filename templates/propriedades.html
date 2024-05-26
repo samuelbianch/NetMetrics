@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'partials/_nav.html' %}
+
+<div class="container mt-5">
+
+    <p>Para o desenvolvimento dos conhecimentos acerca deste trabalho, faz-se necessário a compreensão de alguns conceitos oriundos sobre o tema abordado, sobre as demandas que este software deve atender, por isso, é importante elencar neste trabalho alguns aspectos teóricos.</p>
+
+    <h1>Teoria dos Grafos</h1>
+    
+    <p>A Teoria dos Grafos tem seu inicio com Leonhard Euler em 1736, no qual abstraiu um
+        problema muito discutido na sua cidade, Koningberg; naquela época, havia um boato
+        na cidade, de que era possível atravessar as pontes da ilha passando por todos os
+        caminhos, sem repeti-los ao menos uma vez. Em face disso, Euler provou com um
+        modelo que era composto por pontos ligados por linhas (que modelou a situação), que
+        era impossível fazer tal feito, por conta dos pontos terem o número de linhas ímpares
+        ligados entre eles (EULER, 1741). Mais tarde, esse modelo foi conhecido como um
+        grafo, que será discutido nesta seção, as definições propostas aqui estão contidas em
+        (ZHANG; CHARTRAND, 2006).
+    </p>
+    <p>
+        Um grafo é um conjunto de vértices e arestas e é definido pela Equação 2.1, sendo
+        então uma produção que deve conter no mínimo um vértice (esse grafo é conhecido
+        como grafo trivial). No qual, V representa o número de vértices e, E representa a
+        quantidade total de arestas contidas no grafo.
+    </p>        
+    
+    <h2>Vértice</h2>
+    
+    <p>
+        Um vértice, pode ser definido como a abstração do objeto modelado, este vértices por
+        sua vez, podem representar pessoas, animais, computadores, roteadores, aeroportos,
+        pontos de ônibus, e tantas outras aplicabilidades ao elemento, este também possuem
+        índices, que permeiam o intervalo de [0, ∞]. Eles possuem um papel fundamental, pois
+        são esses vértices que serão analisados propriamente, visto o fato deles serem o ponto
+        de intersecção de uma aresta, se não existir vértice, não se pode existir arestas.
+    </p>
+
+    <h2>Aresta</h2>
+
+    <p>
+        Uma aresta pode ser definida como a ligação entre dois vértices, sendo assim, ela é
+        a parte que conecta um grafo, quanto maior o número de arestas, mais este grafo é
+        dito como conexo. Uma aresta pode ou não conter peso na sua conexão entre dois
+        vértices, os pesos podem significar diferentes medidas nas Redes Complexas. Além
+        disso, há ainda dois modelos muito comuns nestas arestas, ela são classificadas como
+        direcionadas e não direcionas:
+        <p>
+            • Direcionada: faz uma ligação entre um vértice com outro, e esta possui um
+            sentido, que normalmente é indicado por uma seta, demonstrado na Figura 1.
+        </p>
+        <p>  
+            • Não direcionada: faz essa interligação e nela não há uma direção real de qual
+            local aponta para qual, sendo assim, a reciproca entre os vértices é sempre
+            verdadeira. O conceito pode ser visto na Figura 1.
+            Além disso, pode ser que estas arestas possuam pesos em suas ligações, isso gera
+            uma diferença nos moldes de intermediação dos vértices, fazendo com que o grafo
+            seja analisado de uma forma a considerar os pesos entre estas arestas
+        </p>
+    </p>
+
+    <h2>Lista de arestas</h2>
+    <p>
+        Para que um grafo possa ser representado, é essencial que o estudo obtenha uma
+        forma de representar estes grafos, mesmo que não de forma visual, mas seja um
+        padrão já utilizado na comunidade. Uma lista de arestas (do inglês Edge List), é a
+        representação da adjacência dos vértices em um grafo. Basicamente seu conceito é
+        uma lista que deve conter os vértices numerados por índices, no qual o vértice A aponta
+        para o vértice B. O exemplo pode ser conferido no Quadro 1 (grafo direcionado).
+        É muito comum essa lista ser escrita em um aquivo de texto, para o computador possa
+        interpretar as informações. Portanto, a entrada da lista de arestas do Quadro 1, produz
+        um grafo conforme a Figura 2.
+    </p>
+
+    <h1>Redes Complexas</h1>
+
+    <p>
+        Uma Rede Complexa é uma abstração de um modelo, capaz de representar através
+        de um grafo que contém relações, seja elas: humana, animal, humano-máquina,
+        entre máquinas e outras tantas. É uma área da modelagem computacional, muito
+        explorada por cientistas da computação. O conceito de como explorar diferentes formas
+        de interações em um único tipo de diagrama, é discutido por (STROGATZ, 2001).
+        Observa-se diferentes medidas também nestas redes, que serão exploradas nesta
+        seção.
+    </p>
+
+    <h2>Medidas de centralidade</h2>
+
+    <p>
+        Outro fator muito estudado nas redes complexas, são as medidas de centralidade. Elas
+        são medidas que visam estimar quais são os vértices mais influentes na rede, quais
+        centralizam mais informações, qual destes, pode transmitir um dado mais rápido, entre
+        outras. Essas medidas são realizadas através de um cálculo específico para cada
+        algoritmo de centralidade, passando vértice a vértice.
+    </p>
+
+    <h3>Grau</h3>
+
+    <p>
+        Em trabalhos anteriores, como em Silva et. al. 2020, evidencia-se uma medida de
+        centralidade muito eficaz e muito eficiente quando observa-se o tempo de execução
+        do algoritmo e a correlação com as outras demais medidas. Seu cálculo pode ser
+        conferido na Equação 2.2, sendo então o grau de um vértice a soma de todas as
+        arestas deste vértice (SILVA et al., 2020).
+    </p>
+
+    <p style="text-align: center;">ADICIONAR Equação</p>
+
+    
+</div>
+
+<style>
+    p {
+        text-align: justify;
+    }
+
+    h1, h2, h3 {
+        margin-top: 30px;
+    }
+</style>
+
+{% include 'partials/_footer.html' %}
+{% endblock %}

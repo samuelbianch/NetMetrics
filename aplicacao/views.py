@@ -5,12 +5,15 @@ from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from aplicacao.models import Autor, Rede, Artigo
+from aplicacao.plotly import Gerar_Grafico
 from aplicacao.serializer import AutorSerializer, ArtigoSerializer, RedeSerializer
 from aplicacao.make_graph import Make_Graph
 import zipfile
 from io import BytesIO
 import os
 from conectaif import settings
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 def index(request):
     return render(request, 'index.html')
@@ -64,6 +67,10 @@ def make_graph(request):
         
         contexto = grafo.monta_contexto()
 
+        # Salvar cada item do contexto na sessão
+        for key, value in contexto.items():
+            request.session[key] = value
+
         return render(request, 'make_graph.html', contexto)
     return render(request, 'make_graph.html')
 
@@ -93,3 +100,48 @@ def download_images(request):
     response = HttpResponse(zip_buffer, content_type='application/zip')
     response['Content-Disposition'] = 'attachment; filename=imagens.zip'
     return response
+
+def render_pdf_view(request):
+
+    Gerar_Grafico.gerar_donut("Media Trans", float(request.session.get('mediatrans', '0')), "transmedia")
+    Gerar_Grafico.gerar_donut("Reciprocidade", float(request.session.get('reciprocidade', '0')), "reciprocidade")
+    Gerar_Grafico.gerar_donut("Assortatividade", float(request.session.get('assortatividade', '0')), "assortatividade")
+    
+    contexto = {
+        "arestas": request.session.get('arestas', '0'),
+        "vertices": request.session.get('vertices', '0'),
+        "reciprocidade": request.session.get('reciprocidade', '0'),
+        "assortatividade": request.session.get('assortatividade', '0'),
+        "mediatrans": request.session.get('mediatrans', '0'),
+        "imagem" : request.session.get('imagem', ''),
+        "comunidade": request.session.get('comunidade', ''),
+        "centralidade": request.session.get('centralidade', ''),
+        "grau_max": grau_max(),
+        "numero_comunidades": num_comunidades(request.session.get('comunidade', '')),
+    }
+
+    template_path = 'pdf_dados.html'
+    context = contexto
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="saida_rede.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('Houve um problema ao gerar seu PDF <pre>' + html + '</pre>')
+    return response
+
+def grau_max():
+    return '0'
+
+def num_comunidades(comunidade):
+    return '0'
+
+def propriedades(request):
+    return render(request, 'propriedades.html')

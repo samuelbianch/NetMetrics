@@ -1,0 +1,91 @@
+{% load static %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Relatório da Rede Complexa</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+    </head>
+
+    <body>
+        <header>
+            <h1>Relatório completo da rede</h1>
+        </header>
+        <main>
+            <div class="container">
+                <h5>Número de vértices:</h5><p style="display: inline;"> {{ vertices }}</p>
+                <h5>Número de arestas:</h5><p style="display: inline;"> {{ arestas }}</p>
+                <h5>Reciprocidade:</h5><p style="display: inline;"> {{ reciprocidade }}</p>
+                <h5>Assortatividade:</h5><p style="display: inline;"> {{ assortatividade }}</p>
+                <h5>Transitividade média:</h5><p style="display: inline;"> {{ mediatrans }}</p>
+                <h5>Gráu máximo:</h5><p style="display: inline;"> {{ grau_max }}</p>
+                <h5>Número de comunidades:</h5><p style="display: inline;"> {{ numero_comunidades }}</p>
+            </div>
+            <div>
+
+            </div>
+
+            <div class="container">
+                <div class="row w-100 justify-content">
+                    <div class="col-sm">
+                    <div class="card" style="width: 18rem;">
+                        <!--<img src="" class="card-img-top" alt="">-->
+                        <div class="card-body">
+                        {% include "partials/_grafico_reciprocidade.html" %}
+                        <h1 class="card-text text-center">Reciprocidade</h1>
+                        <span class="text-center" style="display: flex; text-align: center;">A tendência de vértices se conectarem de forma mútua</span>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-sm">
+                    <div class="card" style="width: 18rem;">
+                        <!--<img src="" class="card-img-top" alt="">-->
+                        <div class="card-body">
+                        {% include "partials/_grafico_assortatividade.html" %}
+                        <h1 class="card-text text-center">Assortatividade</h1>
+                        <span class="text-center" style="display: flex; text-align: center;">A tendência de vértices de mesmo grau se conectarem</span>
+                        </div>
+                    </div>  
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <!--<img src="" class="card-img-top" alt="">-->
+                        <div class="card-body">
+                        {% include "partials/_grafico_transmedia.html" %}
+                        <h1 class="card-text text-center">Transitividade Média</h1>
+                        <span class="text-center" style="display: flex; text-align: center;">A tendência da formação de comunidades na rede</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <!-- place footer here -->
+        </footer>
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
+{% endblock %}
