@@ -5,6 +5,7 @@
 
 <div class="container mt-5">
 
+    <h1>Propriedades</h1>
     <p>Para o desenvolvimento dos conhecimentos acerca deste trabalho, faz-se necessário a compreensão de alguns conceitos oriundos sobre o tema abordado, sobre as demandas que este software deve atender, por isso, é importante elencar neste trabalho alguns aspectos teóricos.</p>
 
     <h1>Teoria dos Grafos</h1>
@@ -20,11 +21,27 @@
         (ZHANG; CHARTRAND, 2006).
     </p>
     <p>
-        Um grafo é um conjunto de vértices e arestas e é definido pela Equação 2.1, sendo
+        Um grafo é um conjunto de vértices e arestas e é definido pela Equação (1), sendo
         então uma produção que deve conter no mínimo um vértice (esse grafo é conhecido
         como grafo trivial). No qual, V representa o número de vértices e, E representa a
         quantidade total de arestas contidas no grafo.
-    </p>        
+    </p>
+    
+    <div style="text-align: center;">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mrow>
+                <mi>G</mi>
+                <mo>=</mo>
+                <mo>(</mo>
+                <mi>V</mi>
+                <mo>,</mo>
+                <mi>E</mi>
+                <mo>)</mo>
+            </mrow>
+        </math>
+        <span style="float: right;" id="equacao_grafo">Equação (1)</span>
+    </div>
+    
     
     <h2>Vértice</h2>
     
@@ -101,12 +118,89 @@
         Em trabalhos anteriores, como em Silva et. al. 2020, evidencia-se uma medida de
         centralidade muito eficaz e muito eficiente quando observa-se o tempo de execução
         do algoritmo e a correlação com as outras demais medidas. Seu cálculo pode ser
-        conferido na Equação 2.2, sendo então o grau de um vértice a soma de todas as
+        conferido na Equação (1), sendo então o grau de um vértice a soma de todas as
         arestas deste vértice (SILVA et al., 2020).
     </p>
 
-    <p style="text-align: center;">ADICIONAR Equação</p>
+    <div style="text-align: center;">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mrow>
+                <munderover>
+                    <mo>&#8721;</mo>
+                    <mrow>
+                        <mi>e</mi>
+                        <mo>&#x2208;</mo>
+                        <mi>V</mi>
+                    </mrow>
+                </munderover>
+                <mo>&#x202f;</mo>
+                <mrow>
+                    <mi>deg</mi>
+                    <mo>(</mo>
+                    <mi>V</mi>
+                    <mo>)</mo>
+                </mrow>
+                <mo>=</mo>
+                <mo>|</mo>
+                <mi>E</mi>
+                <mo>|</mo>
+            </mrow>
+        </math>
+        <span style="float: right;" id="equacao_grau">Equação (2)</span>
+    </div>
 
+    <p>
+        Em virtude desse cálculo, tendo como exemplo a Figura 2, atribui-se a seguinte
+        pontuação aos vértices com o algoritmo Grau, demonstrado na Figura 3. Observa-se
+        que o vértice 1, possuí uma aresta saindo e 1 entrando, logo seu grau é 2 (D[0] = 2),
+        se olharmos para o vértice 3, que é o de maior grau, examina-se que no mesmo saem
+        4 arestas, e chegam 3, logo seu grau é 7 (D[3] = 7), e assim deve ser feito aos demais.
+    </p>
+    
+    <h3>Betweenness</h3>
+
+    <p>
+        A centralidade de intermediação (betweenness), é definida por uma ponte entre vértices
+        na rede, desse modo, o vértice no qual obtém a maior pontuação nessa medida, é
+        aquele que interliga diferentes comunidades na rede. A depender da situação, ela se
+        prova um fator determinante, como por exemplo na defesa de um aeroporto, no qual
+        ele faz muitas conexões entre viagens aéreas. Seu algoritmo é definido na Equação
+        (3) (ZHANG et al., 2022)
+    </p>
+
+    <div style="text-align: center;">
+        <p>
+            \[
+            BC[i] = \sum_{\substack{i \neq j , j \neq k , k \in V}} \frac{\sigma_{jk}(i)}{\sigma_{jk}}
+            \]
+            <span id="equacao_betweenness">Equação (3)</span>
+        </p>
+    </div>
+
+    <h3>Closeness</h3>
+
+    <p>
+        A medida de proximidade (closeness), apresenta a importância de um vértice se
+        posicionar de modo com que, ele tenha caminhos mais curtos aos outros demais
+        vértices. Define-se então um bom vértice com a pontuação de closeness, o vértice no
+        qual dispõe da menor distância entre os demais vértices da rede. Seu algoritmo está
+        representado na Equação (4).
+    </p>
+    
+    <div style="text-align: center;">
+        <p>
+            \[
+            C = \frac{|V| - 1}{\sum_{i \neq v} d_i}
+            \]
+        </p>
+        <span id="equacao_closeness">Equação (4)</span>
+    </div>
+    
+    <p class="mt-3">
+        No qual, |V| representa o número total de vértices em módulo, e ∑i̸=v di, denota um
+        somatório das colunas da matriz adjacente do vértice i (ZHANG et al., 2022). Posto
+        isso, tem-se então a seguinte pontuação no algoritmo, visualmente na Figura 5.
+    </p>
     
 </div>
 
@@ -119,6 +213,15 @@
         margin-top: 30px;
     }
 </style>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
 {% include 'partials/_footer.html' %}
 {% endblock %}

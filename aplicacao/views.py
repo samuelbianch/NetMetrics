@@ -118,6 +118,7 @@ def render_pdf_view(request):
         "centralidade": request.session.get('centralidade', ''),
         "grau_max": grau_max(),
         "numero_comunidades": num_comunidades(request.session.get('comunidade', '')),
+        "url_site": settings.SITE_URL
     }
 
     template_path = 'pdf_dados.html'

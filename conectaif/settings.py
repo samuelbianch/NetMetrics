@@ -15,6 +15,7 @@ SECRET_KEY = 'django-insecure-q(^#ml!$#v0j!+=x1yi(6i29txk_dw87i&fp@vw3t^0+n)o+vt
 DEBUG = True
 
 ALLOWED_HOSTS = ['191.239.121.24', '127.0.0.1', 'localhost']
+SITE_URL = os.environ.get('SITE_URL', 'http://127.0.0.1:8000/')
 
 
 # Application definition

@@ -26,16 +26,40 @@
         </header>
         <main>
             <div class="container">
-                <h5>Número de vértices:</h5><p style="display: inline;"> {{ vertices }}</p>
-                <h5>Número de arestas:</h5><p style="display: inline;"> {{ arestas }}</p>
-                <h5>Reciprocidade:</h5><p style="display: inline;"> {{ reciprocidade }}</p>
-                <h5>Assortatividade:</h5><p style="display: inline;"> {{ assortatividade }}</p>
-                <h5>Transitividade média:</h5><p style="display: inline;"> {{ mediatrans }}</p>
-                <h5>Gráu máximo:</h5><p style="display: inline;"> {{ grau_max }}</p>
-                <h5>Número de comunidades:</h5><p style="display: inline;"> {{ numero_comunidades }}</p>
+                <h5>Número de vértices:</h5><p> {{ vertices }}</p>
+                <h5>Número de arestas:</h5><p> {{ arestas }}</p>
+                <h5>Reciprocidade:</h5><p> {{ reciprocidade }}</p>
+                <h5>Assortatividade:</h5><p> {{ assortatividade }}</p>
+                <h5>Transitividade média:</h5><p> {{ mediatrans }}</p>
+                <h5>Gráu máximo:</h5><p> {{ grau_max }}</p>
+                <h5>Número de comunidades:</h5><p> {{ numero_comunidades }}</p>
             </div>
-            <div>
 
+            <div class="container">
+                <h2>Visualize as comunidades e pontuações dos vértices</h2>
+                <div class="row">
+                    <div class="card text-start">
+                        {% if comunidade %}
+                        <img class="card-img-top" src="{{ url_site }}{% static 'redes/comunidades/' %}{{ comunidade }}" alt="Title" />
+                        {% else %}
+                        <p>Adicione uma rede complexa</p>
+                        {% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title">Comunidade da rede inserida</h4>
+                        </div>
+                    </div>
+                  
+                    <div class="card text-start">
+                        {% if centralidade %}
+                        <img class="card-img-top" src="{{ url_site }}{% static 'redes/centralidade/' %}{{ centralidade }}" alt="Title" />
+                        {% else %}
+                        <p>Adicione uma rede complexa</p>
+                        {% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title">Pontuação dos vértices</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="container">
@@ -71,8 +95,8 @@
                 </div>
             </div>
         </main>
-        <footer>
-            <!-- place footer here -->
+        <footer class="b-0">
+            <p style="align-items: center; text-align: center;">Gerado por: {{ url_site }}</p>
         </footer>
         <!-- Bootstrap JavaScript Libraries -->
         <script
