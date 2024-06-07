@@ -1,6 +1,7 @@
 import igraph
 from .utils import Utils
 import uuid
+import leidenalg as la
 
 class Make_Community():
 
@@ -59,3 +60,14 @@ class Make_Community():
     
         return nome_da_imagem
     
+    def gerador_comunidades_leiden(self):
+
+        comunidades = igraph.Graph.community_leiden(
+            graph=self.grafo.as_undirected(),
+            objective_function='modularity',
+        )
+
+        nome_da_imagem = f"{uuid.uuid4()}.svg"
+        igraph.plot(comunidades, f"aplicacao/static/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
+    
+        return nome_da_imagem

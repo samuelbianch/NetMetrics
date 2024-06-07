@@ -74,6 +74,11 @@ class Make_Graph():
 		nome_da_imagem = comunidade.gerador_comunidades_fastgreedy()
 		return nome_da_imagem
 	
+	def plot_comunidade_leiden(self):
+		comunidade = make_community.Make_Community(grafo=self.grafo)
+		nome_da_imagem = comunidade.gerador_comunidades_leiden()
+		return nome_da_imagem
+	
 	def plot_pontuacao_grau(self):
 		return make_centrality.gerar_grafico_grau(grafo=self.grafo)
 	
@@ -104,6 +109,8 @@ class Make_Graph():
 			comunidade = self.plot_comunidade_infomap()
 		elif self.comunidade_escolhida == '3':
 			comunidade = self.plot_comunidade_fastgreedy()
+		elif self.comunidade_escolhida == '4':
+			comunidade = self.plot_comunidade_leiden()
 
 		if self.centralidade_escolhida == '0':
 			centralidade = self.plot_pontuacao_grau()
