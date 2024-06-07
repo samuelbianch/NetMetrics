@@ -15,6 +15,8 @@ class Make_Community():
             weights=None
         )
 
+        igraph.Graph.comm
+
         nome_da_imagem = f"{uuid.uuid4()}.svg"
         igraph.plot(comunidades, f"aplicacao/static/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
 

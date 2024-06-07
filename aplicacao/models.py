@@ -34,7 +34,7 @@ class Rede(models.Model):
         verbose_name_plural = "Redes"
 
     def __str__(self):
-        return self.criado_em
+        return self.criado_em.strftime('%Y-%m-%d %H:%M:%S')
 
     arquivo = models.FileField(upload_to='redes/%Y/%m/%d')
     criado_em = models.DateTimeField(auto_now_add=True)
