@@ -11,16 +11,21 @@ class Gerar_Grafico():
 
     def gerar_donut(label, value, arq):
 
-        0 if value < 0 else value
+        colors = ['rgb(255, 255, 255)', 'rgb(0, 181, 30)', 'rgb(0, 0, 255)']
+        if value < 0:
+            colors = ['rgb(255, 255, 255)',  'rgb(250, 0, 0)', 'rgb(0, 0, 255)']
+            value = value * (-1)
         labels = ['', label]
         values = [1 - value, value]
 
+        
         # Use `hole` to create a donut-like pie chart
-        fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
+        fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3, marker_colors=colors)])
         fig.update(layout_showlegend=False)
+        fig.update_traces(hoverinfo='label+percent+name', textinfo='none')
         fig.update({'layout': {
             'xaxis' : {
-                'color': '#229954'
+                'color': 'green'
                 },
             'height': 300,
             'width': 300,

@@ -1,7 +1,6 @@
 from django.test import TestCase
 from aplicacao.models import Rede
 from django.core.files.uploadedfile import SimpleUploadedFile
-from datetime import datetime
 import pytz
 
 class RedeModelTest(TestCase):

@@ -6,9 +6,12 @@
 {% include 'partials/_nav.html' %}
 
   <div class="container">
-      <div class="rounded mb-3" id="rede-modelada">
+      <div class="rounded mb-3 w-100" id="rede-modelada">
         {% if imagem %}
-        <img src="{% static 'redes/' %}{{imagem}}" class="img-fluid text-center" alt="Rede modelada">
+        <div class="image-container" id="image-container">
+          <img src="{% static 'redes/' %}{{imagem}}" class="img-fluid text-center" alt="Rede modelada" id="zoom-image">
+        </div>
+        
         {% else %}
         <!--<img src="/media/img/rede_exemplo.png" class="img-fluid text-center" alt="Rede modelada">-->
         {% endif %}
@@ -96,7 +99,7 @@
 
   <div class="container">
     <h2>Visualize as comunidades e pontuações dos vértices</h2>
-    <div class="row">
+    <div class="row w-100">
       <div class="card text-start">
         {% if comunidade %}
         <img class="card-img-top" src="{% static 'redes/comunidades/' %}{{ comunidade }}" alt="Title" />
@@ -108,7 +111,7 @@
         </div>
       </div>
       
-      <div class="card text-start">
+      <div class="card text-start mt-3">
         {% if centralidade %}
           <img class="card-img-top" src="{% static 'redes/centralidade/' %}{{ centralidade }}" alt="Title" />
         {% else %}
@@ -241,6 +244,62 @@
         // Alterar a exibição dos inputs com base nas mudanças do estado do checkbox
         $('#ativarCentralidade').change(ativarCentralidade);
     });
+
+    const container = document.getElementById('image-container');
+    const image = document.getElementById('zoom-image');
+    let isZoomed = false;
+    let startX, startY, moveX = 0, moveY = 0;
+
+    container.addEventListener('click', () => {
+        if (isZoomed) {
+            image.style.transform = 'scale(1)';
+            isZoomed = false;
+            container.classList.remove('zoom-in');
+            moveX = 0;
+            moveY = 0;
+        } else {
+            image.style.transform = 'scale(2)';
+            isZoomed = true;
+            container.classList.add('zoom-in');
+        }
+    });
+
+    container.addEventListener('mousedown', (e) => {
+        if (isZoomed) {
+            container.classList.add('zoom-in');
+            startX = e.clientX - moveX;
+            startY = e.clientY - moveY;
+            container.addEventListener('mousemove', moveImage);
+        }
+    });
+
+    container.addEventListener('mouseup', () => {
+        container.classList.remove('zoom-in');
+        container.removeEventListener('mousemove', moveImage);
+    });
+
+    container.addEventListener('mouseleave', () => {
+        container.classList.remove('zoom-in');
+        container.removeEventListener('mousemove', moveImage);
+    });
+
+    function moveImage(e) {
+        moveX = e.clientX - startX;
+        moveY = e.clientY - startY;
+        const imgRect = image.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+
+        // Limites para não sair do container
+        const minX = containerRect.width - imgRect.width / 2;
+        const minY = containerRect.height - imgRect.height / 2;
+
+        if (moveX > 0) moveX = 0;
+        if (moveY > 0) moveY = 0;
+        if (moveX < minX) moveX = minX;
+        if (moveY < minY) moveY = minY;
+
+        image.style.transform = `scale(2) translate(${moveX}px, ${moveY}px)`;
+    }
 </script>
 
 <style>
@@ -303,6 +362,27 @@
   #rede-modelada{
     width: 80%;
   }
+
+  .image-container {
+    position: relative;
+    overflow: hidden; /* Garante que a imagem não ultrapasse os limites do contêiner */
+    cursor: zoom-in; /* Cursor para indicar que o usuário pode clicar para dar zoom */
+  }
+
+  .image-container img {
+    width: 100%;
+    transition: transform 0.2s;
+    cursor: zoom-in;
+  }
+
+  .image-container.zoom-in img {
+    cursor: zoom-out; /* Cursor para indicar que o usuário pode clicar para diminuir o zoom */
+  }
+
+  .image-container.zoom-in {
+    cursor: move; /* Cursor para indicar que o usuário pode arrastar a imagem */
+  }
+  
 </style>
 
 {% endblock %}
