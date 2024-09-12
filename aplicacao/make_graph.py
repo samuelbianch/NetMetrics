@@ -47,7 +47,7 @@ class Make_Graph():
 			vertex_color=(0, 0, 0),
 			vertex_label_color=(255, 255, 255),
 			vertex_dist=200,
-			vertex_label_size=25,
+			vertex_label_size=10,
 			vertex_size=40,
 			layout=layout
 		)

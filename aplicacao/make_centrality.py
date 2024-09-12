@@ -29,8 +29,9 @@ def gerar_grafico_grau(grafo):
 def gerar_grafico_betweenness(grafo):
 
     betweenness_centrality = grafo.betweenness()
+    betweenness_centrality_roudend = [0 if math.isnan(n) else round(n, 2) for n in betweenness_centrality]
 
-    visual_style = definindo_layout(grafo, betweenness_centrality)
+    visual_style = definindo_layout(grafo, betweenness_centrality_roudend)
 
     nome_imagem = f"{uuid.uuid4()}.svg"
     igraph.plot(grafo, f"aplicacao/static/redes/centralidade/{nome_imagem}",  **visual_style)
