@@ -16,6 +16,7 @@ Django==4.1.7
 django-jazzmin==2.6.0
 djangorestframework==3.14.0
 fonttools==4.50.0
+gunicorn==23.0.0
 html5lib==1.1
 idna==3.7
 igraph==0.10.4

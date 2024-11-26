@@ -12,11 +12,9 @@ services:
 
   web:
     build: .
-    command: sh -c "python migration_script.py && python manage.py runserver 0.0.0.0:443"
+    command: gunicorn --workers 3 --bind 0.0.0.0:8000 conectaif.wsgi:application
     volumes:
       - .:/code
-    ports:
-      - "443:443"
     environment:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
@@ -24,4 +22,19 @@ services:
       - SQL_HOST=db
     depends_on:
       - db
+    expose:
+      - 8000
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./static:/code/static
+      - ./media:/code/media
+    depends_on:
+      - web
       
