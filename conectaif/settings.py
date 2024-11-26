@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q(^#ml!$#v0j!+=x1yi(6i29txk_dw87i&fp@vw3t^0+n)o+vt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['191.239.121.24', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['191.239.121.24', '127.0.0.1', 'localhost', '200.129.251.100']
 SITE_URL = os.environ.get('SITE_URL', 'http://127.0.0.1:8000/')
 
 
@@ -73,7 +73,7 @@ DATABASES = {
         'NAME': os.environ.get('POSTGRES_NAME', 'conectaif'),
         'USER': os.environ.get('POSTGRES_USER', 'postgres'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'admin'),
-        'HOST': '127.0.0.1',#os.environ.get('SQL_HOST', '127.0.0.1'),
+        'HOST': os.environ.get('SQL_HOST', '127.0.0.1'),
         'PORT': os.environ.get('SQL_PORT', '5432')
     }
 }
