@@ -2,6 +2,7 @@ import igraph
 from .utils import Utils
 import uuid
 import leidenalg as la
+from conectaif.settings import MEDIA_ROOT as media
 
 class Make_Community():
 
@@ -17,7 +18,7 @@ class Make_Community():
         )
 
         nome_da_imagem = f"{uuid.uuid4()}.svg"
-        igraph.plot(comunidades, f"aplicacao/static/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
+        igraph.plot(comunidades, f"{media}/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
 
         return nome_da_imagem
     
@@ -31,7 +32,7 @@ class Make_Community():
         ).as_clustering()
 
         nome_da_imagem = f"{uuid.uuid4()}.svg"
-        igraph.plot(comunidades, f"aplicacao/static/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
+        igraph.plot(comunidades, f"{media}/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
         
         return nome_da_imagem
     
@@ -43,7 +44,7 @@ class Make_Community():
         ).as_clustering()
 
         nome_da_imagem = f"{uuid.uuid4()}.svg"
-        igraph.plot(comunidades, f"aplicacao/static/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
+        igraph.plot(comunidades, f"{media}/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
 
         return nome_da_imagem
     
@@ -54,7 +55,7 @@ class Make_Community():
         )
 
         nome_da_imagem = f"{uuid.uuid4()}.svg"
-        igraph.plot(comunidades, f"aplicacao/static/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
+        igraph.plot(comunidades, f"{media}/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
     
         return nome_da_imagem
     
@@ -66,6 +67,6 @@ class Make_Community():
         )
 
         nome_da_imagem = f"{uuid.uuid4()}.svg"
-        igraph.plot(comunidades, f"aplicacao/static/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
+        igraph.plot(comunidades, f"{media}/redes/comunidades/{nome_da_imagem}", bbox=(800, 350), edge_width=1, mark_groups=True, vertex_label_size=10, vertex_label=self.vindex, vertex_dist=200)
     
         return nome_da_imagem

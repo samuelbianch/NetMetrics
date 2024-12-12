@@ -1,6 +1,7 @@
 import math
 import uuid
 import igraph
+from conectaif.settings import MEDIA_ROOT as media 
 
 def definindo_layout(grafo, centralidade):
     layout = grafo.layout("kk")
@@ -22,7 +23,7 @@ def gerar_grafico_grau(grafo):
     visual_style = definindo_layout(grafo, degree_centrality)
 
     nome_imagem = f"{uuid.uuid4()}.svg"
-    igraph.plot(grafo, f"aplicacao/static/redes/centralidade/{nome_imagem}",  **visual_style)
+    igraph.plot(grafo, f"{media}/redes/centralidade/{nome_imagem}",  **visual_style)
 
     return nome_imagem
 
@@ -34,7 +35,7 @@ def gerar_grafico_betweenness(grafo):
     visual_style = definindo_layout(grafo, betweenness_centrality_roudend)
 
     nome_imagem = f"{uuid.uuid4()}.svg"
-    igraph.plot(grafo, f"aplicacao/static/redes/centralidade/{nome_imagem}",  **visual_style)
+    igraph.plot(grafo, f"{media}/redes/centralidade/{nome_imagem}",  **visual_style)
 
     return nome_imagem
 
@@ -46,6 +47,6 @@ def gerar_grafico_closeness(grafo):
     visual_style = definindo_layout(grafo, closeness_centrality_rounded)
 
     nome_imagem = f"{uuid.uuid4()}.svg"
-    igraph.plot(grafo, f"aplicacao/static/redes/centralidade/{nome_imagem}",  **visual_style)
+    igraph.plot(grafo, f"{media}/redes/centralidade/{nome_imagem}",  **visual_style)
 
     return nome_imagem

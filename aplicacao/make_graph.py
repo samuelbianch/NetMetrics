@@ -4,6 +4,7 @@ import time
 from aplicacao.plotly import Gerar_Grafico
 from .utils import Utils
 from aplicacao import make_community, make_centrality
+import os
 
 class Make_Graph():
 
@@ -28,8 +29,8 @@ class Make_Graph():
 			dia = str(today.day)
 
 		self.caminho_para_imagem = "media/redes/"+ ano + "/" + mes + "/" + dia + "/"
-
-		with open(self.caminho_para_imagem + lista_arestas.name) as arquivo:
+		os.makedirs(os.path.dirname(self.caminho_para_imagem), exist_ok=True)
+		with open(self.caminho_para_imagem + lista_arestas.name, 'r') as arquivo:
 			grafo = grafo.Read_Edgelist(arquivo, directed=direcionada)
 			arquivo.close()
 
