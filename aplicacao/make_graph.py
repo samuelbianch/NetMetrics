@@ -27,7 +27,9 @@ class Make_Graph():
 		else:
 			dia = str(today.day)
 
-		with open(f"media/redes/"+ ano + "/" + mes + "/" + dia + "/" + lista_arestas.name) as arquivo:
+		self.caminho_para_imagem = "media/redes/"+ ano + "/" + mes + "/" + dia + "/"
+
+		with open(self.caminho_para_imagem + lista_arestas.name) as arquivo:
 			grafo = grafo.Read_Edgelist(arquivo, directed=direcionada)
 			arquivo.close()
 
@@ -39,7 +41,7 @@ class Make_Graph():
 		nome_da_imagem = str(time.time()) + ".svg"
 		igraph.plot(
 			self.grafo,
-			"aplicacao/static/redes/" + nome_da_imagem, 
+			self.caminho_para_imagem + nome_da_imagem, 
 			bbox=(800, 350),
 			vertex_label=vindex,
 			margin=20,
