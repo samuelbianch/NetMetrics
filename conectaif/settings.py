@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q(^#ml!$#v0j!+=x1yi(6i29txk_dw87i&fp@vw3t^0+n)o+vt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True#False
 
 ALLOWED_HOSTS = ['191.239.121.24', '127.0.0.1', 'localhost', '200.129.251.100']
 SITE_URL = os.environ.get('SITE_URL', 'http://127.0.0.1:8000/')
@@ -78,7 +78,7 @@ DATABASES = {
     }
 }
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '/code/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = ('/media/')
 
 # Password validation
