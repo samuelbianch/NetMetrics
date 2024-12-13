@@ -9,7 +9,7 @@
       <div class="rounded mb-3 w-100" id="rede-modelada">
         {% if imagem %}
         <div class="image-container" id="image-container">
-          <img src="{% static 'redes/' %}{{imagem}}" class="img-fluid text-center" alt="Rede modelada" id="zoom-image">
+          <img src="{%  'media/redes/' %}{{imagem}}" class="img-fluid text-center" alt="Rede modelada" id="zoom-image">
         </div>
         
         {% else %}
@@ -102,7 +102,7 @@
     <div class="row w-100">
       <div class="card text-start">
         {% if comunidade %}
-        <img class="card-img-top" src="{% static 'redes/comunidades/' %}{{ comunidade }}" alt="Title" />
+        <img class="card-img-top" src="{% 'media/redes/comunidades/' %}{{ comunidade }}" alt="Title" />
         {% else %}
         <p>Adicione uma rede complexa</p>
         {% endif %}
@@ -113,7 +113,7 @@
       
       <div class="card text-start mt-3">
         {% if centralidade %}
-          <img class="card-img-top" src="{% static 'redes/centralidade/' %}{{ centralidade }}" alt="Title" />
+          <img class="card-img-top" src="{% 'media/redes/centralidade/' %}{{ centralidade }}" alt="Title" />
         {% else %}
           <p>Adicione uma rede complexa</p>
         {% endif %}
