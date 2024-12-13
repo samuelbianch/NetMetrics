@@ -28,9 +28,9 @@ class Make_Graph():
 		else:
 			dia = str(today.day)
 
-		self.caminho_para_imagem = "media/redes/"+ ano + "/" + mes + "/" + dia + "/"
-		os.makedirs(os.path.dirname(self.caminho_para_imagem), exist_ok=True)
-		with open(self.caminho_para_imagem + lista_arestas.name, 'r') as arquivo:
+		self.caminho_para_o_arquivo_de_entrada = "media/redes/"+ ano + "/" + mes + "/" + dia + "/"
+		os.makedirs(os.path.dirname(self.caminho_para_o_arquivo_de_entrada), exist_ok=True)
+		with open(self.caminho_para_o_arquivo_de_entrada + lista_arestas.name, 'r') as arquivo:
 			grafo = grafo.Read_Edgelist(arquivo, directed=direcionada)
 			arquivo.close()
 
@@ -40,9 +40,10 @@ class Make_Graph():
 		layout = self.grafo.layout("kk")
 		vindex = Utils.make_vindex(self.grafo.vcount())
 		nome_da_imagem = str(time.time()) + ".svg"
+		self.caminho_para_a_imagem = self.caminho_para_o_arquivo_de_entrada + nome_da_imagem
 		igraph.plot(
 			self.grafo,
-			self.caminho_para_imagem + nome_da_imagem, 
+			self.caminho_para_a_imagem, 
 			bbox=(800, 350),
 			vertex_label=vindex,
 			margin=20,
@@ -130,7 +131,8 @@ class Make_Graph():
 			"mediatrans": round(mediatrans,2),
 			"imagem" : self.plot_graph(),
 			"comunidade": comunidade,
-			"centralidade": centralidade
+			"centralidade": centralidade,
+			"caminho_imagem": self.caminho_para_a_imagem
 		}
 
 		return contexto
