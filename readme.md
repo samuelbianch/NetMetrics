@@ -51,3 +51,5 @@ python manage.py runserver
 <a href="http://lattes.cnpq.br/6002852715365673" style="color: inherit;" target="_blank">Tiago de Almeida Lacerda</a>  *(Coorientador)*
 
 Contato: samuelbianch38@gmail.com
+
+## [Licença](./LICENSE)
